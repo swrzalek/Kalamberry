@@ -6,14 +6,11 @@
 
     >
         <v-layout wrap>
-            <v-flex xs12 >
-                <div class="title font-weight-medium text-xs-left pl-2 pb-2 white--text">K A L A M B E R R Y <v-icon color="white">message</v-icon></div>
-
-            </v-flex>
+          
             <v-flex xs12 class="flex-card">
                 <v-card dark color="secondary" class="rounded-card">
                     <v-flex pt-5>
-                        <WordCard word="Home"></WordCard>
+                     
                     </v-flex>
                 </v-card>
                 <v-flex xs12 class="ma-auto">
@@ -49,11 +46,11 @@
 </template>
 
 <script>
-    import WordCard from '../components/SimpleWordComponent'
+    
     export default {
         name: "SimpleGame",
         components: {
-            WordCard
+            
         }
     }
 </script>

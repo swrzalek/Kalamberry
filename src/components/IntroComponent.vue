@@ -6,11 +6,7 @@
                     class="grad-top"
 
             >
-                <v-layout wrap>
-                    <v-flex xs12 >
-                        <div class="title font-weight-medium text-xs-left pl-2 pb-2 white--text">K A L A M B E R R Y <v-icon color="white">message</v-icon></div>
-
-                    </v-flex>
+                <v-layout wrap>                  
                     <v-flex xs6 class="flex-card">
                         <v-card dark color="secondary" class="rounded-card" to="/words">
                             <v-flex pt-5>
