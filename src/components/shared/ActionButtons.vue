@@ -1,7 +1,7 @@
 <template>
     <div id="actionbuttons">
         <v-btn @click="correct" outlined x-large>NEXT</v-btn>
-        <v-btn @click="reset" outlined x-large>RESET</v-btn>            
+        <v-btn outlined x-large>RESET</v-btn>            
      </div>    
 </template>
 

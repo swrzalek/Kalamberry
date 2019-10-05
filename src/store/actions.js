@@ -2,6 +2,9 @@ import * as types from './constants';
 import axios from 'axios';
 import state from './state'
 const http = axios.create({
+    headers: {
+        'Access-Control-Allow-Origin': '*',
+      },
     baseURL : 'http://127.0.0.1:3000/api',
 })
 export default {
@@ -19,7 +22,6 @@ export default {
             .then((res) => {
                 commit(types.SET_ALL_WORDS, res.data);
                 commit(types.SET_LOADING_STATUS);               
-                commit('setVisibleCards', state.allWords.map(i => i.word));
                 return res.data;
             });
     },
@@ -41,7 +43,9 @@ export default {
     },
     prepareGame({commit, state}) {
         commit('resetGame');
-        
+       const StartDeck = state.allWords.map(i => i.word)
+
+        commit('setVisibleCards', StartDeck);
     },
     finishGame({commit}) {
         commit('setGameState', 'finished')

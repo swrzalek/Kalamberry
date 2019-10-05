@@ -20,7 +20,7 @@ export default {
         showNextCard() {
             this.loadNextCard();
         },
-        ...mapActions(['loadNextCard']),
+        ...mapActions(['loadNextCard','fetchAllWords']),
     },
     computed: {
         ...mapState(['visibleCards'])
@@ -29,12 +29,15 @@ export default {
         WordLoader,
         ActionButtons,
         BeforeStartModal
-    }
+    },
+    created() {
+            this.fetchAllWords();            
+        }
 }
 </script>
 <template>
   <div id="charades">
-      <before-start-modal v-if="showModal" @close="showModal = false"></before-start-modal>
+      <before-start-modal v-if="showModal" @close="showModal = false; "></before-start-modal>
       <v-container container grid-list-xl>
           <v-layout wrap>
               <v-flex xs12>

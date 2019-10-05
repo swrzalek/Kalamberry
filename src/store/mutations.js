@@ -20,7 +20,7 @@ export default {
         state.visibleWord = word;
     },
     resetGame(state) {
-        state.currentRound=1;
+        state.currentRound=1;        
     },
     incrementRound(state) {
         state.currentRound += 1;

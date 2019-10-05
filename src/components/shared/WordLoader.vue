@@ -21,7 +21,7 @@ import {mapState, mapActions} from 'vuex';
             WordComponent,
         },
         data: () => ({
-            wordsArray: ['Home'],
+            wordsArray: [],
 
         }),
         mounted() {
@@ -34,7 +34,7 @@ import {mapState, mapActions} from 'vuex';
             currentWord() {
                return "Słowo";
             },
-             ...mapState(['allWords']),
+             ...mapState(['allWords','gameState']),
              
         },
         props: {
@@ -43,13 +43,20 @@ import {mapState, mapActions} from 'vuex';
                 required: true,
             }
         },
+        watch: {
+            gameState(){               
+                this.correctAnswer()
+            }
+        },
         methods: {
             addItem(){
-                if(this.cards.length > 0){
-                    this.wordsArray.push(this.cards[0])
-                    this.wordsArray.shift()
+                if(this.wordsArray.length === 0){
+                    this.wordsArray.push(this.cards[0]) 
+                 } else {
+                     this.wordsArray.push(this.cards[0])
+                     this.wordsArray.shift()
+                 }
 
-                }
             },        
             correctAnswer() {
                 this.$emit('correctAnswer')

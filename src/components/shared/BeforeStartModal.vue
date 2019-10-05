@@ -25,13 +25,15 @@ import {mapState, mapActions} from 'vuex';
         methods: {            
             started(){
                 this.startGame();
+                
             },
-            ...mapActions(['fetchAllWords','startGame','prepareGame']),
+            ...mapActions(['startGame','prepareGame']),
         },
-        created() {
-            this.fetchAllWords();
-            this.prepareGame();
-        }      
+        watch:{
+            isLoading(){
+              this.prepareGame();
+            }
+         },
     }
 </script>
 
