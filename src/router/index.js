@@ -1,9 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import MainGameComponent from "../components/MainGameComponent";
 import Home from '../components/pages/Home';
-// import WordsComponent from "./components/WordsComponent";
-import SimpleGame from "../components/pages/SimpleGame"
+import Charades from '../components/pages/Charades';
+import Setup from "../components/pages/Setup";
 
 Vue.use(Router)
 
@@ -17,14 +16,14 @@ export default new Router({
       component: Home
     },
     {
-      path: '/main',
-      name: 'main',
-      component: MainGameComponent
+      path: '/kalamberry',
+      name: 'kalamberry',
+      component: Charades
     },
     {
-      path: '/words',
-      name: 'words',
-      component: SimpleGame
+      path: '/setup',
+      name: 'setup',
+      component: Setup
     },
   ]
 })
