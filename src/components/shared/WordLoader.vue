@@ -45,7 +45,7 @@ import {mapState, mapActions} from 'vuex';
         },
         watch: {
             gameState(){               
-                this.correctAnswer()
+                this.loadFirstWord();
             }
         },
         methods: {
@@ -57,7 +57,10 @@ import {mapState, mapActions} from 'vuex';
                      this.wordsArray.shift()
                  }
 
-            },        
+            },
+            loadFirstWord(){
+                this.addItem();
+            },       
             correctAnswer() {
                 this.$emit('correctAnswer')
                 this.addItem();

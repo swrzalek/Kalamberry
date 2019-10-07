@@ -8,5 +8,6 @@ export default {
     visibleWordIndex: 0,
     isLoading: 'true',
     currentRound:'',
-    gameState:''
+    gameState:'',
+    categories: [],
 }

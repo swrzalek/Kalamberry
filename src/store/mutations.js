@@ -16,6 +16,9 @@ export default {
     [types.SET_LOADING_STATUS](state) {
         state.isLoading = !state.isLoading
     },
+    [types.SET_ALL_CATEGORIES](state, allCategories) {
+        state.categories = allCategories;
+    },
     pushWordToVisibleWord(state, word) {
         state.visibleWord = word;
     },
@@ -35,5 +38,6 @@ export default {
         state.playedCards.push(word);
         state.visibleCards.shift();
     }
+    
 
 }

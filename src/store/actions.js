@@ -1,6 +1,7 @@
 import * as types from './constants';
 import axios from 'axios';
 import state from './state'
+import { shuffleArray } from '../utils/utils';
 const http = axios.create({
     headers: {
         'Access-Control-Allow-Origin': '*',
@@ -25,13 +26,17 @@ export default {
                 return res.data;
             });
     },
-    loadNextCard({commit}){
-            const CurrentWords = state.allWords.map(i => i.word); 
+    async fetchAllCategories({ commit }) {
+        return http.get('/categories')
+            .then((res) => {
+                commit(types.SET_ALL_CATEGORIES, res.data);
+            });
+    },
+    loadNextCard({commit}){ 
             const remaingWords = 1;
          if(remaingWords) {          
-
             
-            commit('pushWordToPlayed', CurrentWords[0]);
+            commit('pushWordToPlayed', state.visibleCards[0]);
         } 
     },
     nextRound({commit}) {
@@ -45,7 +50,7 @@ export default {
         commit('resetGame');
        const StartDeck = state.allWords.map(i => i.word)
 
-        commit('setVisibleCards', StartDeck);
+        commit('setVisibleCards', shuffleArray(StartDeck));
     },
     finishGame({commit}) {
         commit('setGameState', 'finished')

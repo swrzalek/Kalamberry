@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 
 let WordSchema = new Schema({
     word: {type: String, required: true, max: 100},
+    category: {type: String, required: true, max: 100},
     difficulty: {type: Number, default: 0}
 })
 

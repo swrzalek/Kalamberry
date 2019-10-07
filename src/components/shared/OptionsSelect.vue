@@ -1,8 +1,20 @@
 <script>
 export default {
     data: () => ({
-        items: ['1','2','3','4']
+        items: ['1','2','3','4'],
+       levelLabels: [
+        'Łatwy',
+        'Średni',
+        'Trudnawy'
+      ],
+      level:'0',
+      category:''
     }),
+    methods: {
+      season (val) {
+        return this.icons[val]
+      },
+    }
 
 
 }
@@ -12,33 +24,29 @@ export default {
 
 <template>
   <div id="optionsselect">
-     <v-container>
-       <v-flex class="mt-4 text-xs-left thin black--text">
-                <p class="body-1">Poziom trudności</p>
-                <v-slider
-                        hint="poziom"
-                        color="black"
-                        :max="2"
-                        step="1"
-                        tick-size="3"
-                ></v-slider>
-            </v-flex>
-
+     <v-row>
+       <p>Poziom trudności: {{levelLabels[level]}}</p>
+    <v-col class="pa-12">
+       <v-slider
+        v-model="level"
+        :tick-labels="levelLabels"
+        :max="2"
+        step="1"
+        ticks
+        tick-size="4"
+      ></v-slider>
+    </v-col>
+  </v-row>
+        <p>Kategoria: {{category}}</p>
         <v-select
       :items="items"
-
+      v-model="category"
       label="Item"
       required
       @change="$v.select.$touch()"
       @blur="$v.select.$touch()"
     ></v-select>
-      <v-col cols="12">
-        <v-subheader class="pl-0">Always show thumb label</v-subheader>
-        <v-slider
-          thumb-label="always"
-        ></v-slider>
-      </v-col>
-     </v-container>
+      
   </div>
 
 </template>

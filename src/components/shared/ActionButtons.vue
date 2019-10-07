@@ -1,7 +1,8 @@
 <template>
     <div id="actionbuttons">
-        <v-btn @click="correct" outlined x-large>NEXT</v-btn>
-        <v-btn outlined x-large>RESET</v-btn>            
+        <v-btn @click="correct" outlined mx-2 dark color="red lighten-1">
+            <v-icon dark>mdi-chevron-right</v-icon>
+         </v-btn>          
      </div>    
 </template>
 
