@@ -30,7 +30,7 @@ export default {
         return http.get('/categories')
             .then((res) => {
                 commit(types.SET_ALL_CATEGORIES, res.data);
-            });
+            }); 
     },
     loadNextCard({commit}){ 
             const remaingWords = 1;
