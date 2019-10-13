@@ -24,6 +24,7 @@ import {mapState, mapActions} from 'vuex';
           },  
         methods: {            
             started(){
+               this.prepareGame();
                 this.startGame();
                 
             },

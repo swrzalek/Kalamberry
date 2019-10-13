@@ -6,8 +6,7 @@
              :key="word"
              :is-current="index === 0"
             :card='word'></word-component>
-     </div>
-    
+     </div>    
 </template>
 
 <script>
@@ -21,14 +20,14 @@ import {mapState, mapActions} from 'vuex';
             WordComponent,
         },
         data: () => ({
-            wordsArray: [],
+            wordsArray: [''],
 
         }),
         mounted() {
-            EventBus.$on(types.$GAME_CORRECT_ANSWER, this.correctAnswer)
+            EventBus.$on(types.GAME_CORRECT_ANSWER, this.correctAnswer)
         },
         beforeDestroy() {
-             EventBus.$off(types.$GAME_CORRECT_ANSWER, this.correctAnswer);
+             EventBus.$off(types.GAME_CORRECT_ANSWER, this.correctAnswer);
         },
         computed: {
             currentWord() {

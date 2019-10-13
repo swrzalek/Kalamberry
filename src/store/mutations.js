@@ -1,15 +1,7 @@
 import * as types from './constants';
 
+
 export default {
-    [types.INCREMENT](state) {
-        state.count++;
-    },
-    [types.DECREMENT](state) {
-        state.count--;
-    },
-    [types.RESET](state) {
-        state.count = 0;
-    },
     [types.SET_ALL_WORDS](state, allWords) {
         state.allWords = allWords;
     },
@@ -18,6 +10,12 @@ export default {
     },
     [types.SET_ALL_CATEGORIES](state, allCategories) {
         state.categories = allCategories;
+    },
+    setSelectedCategories(state, selectedCategories) {
+        state.selectedCategories = selectedCategories;
+    },
+    setWordsFromCategories(state, words) {
+        state.setWordsFromCategories = words;
     },
     pushWordToVisibleWord(state, word) {
         state.visibleWord = word;
@@ -37,7 +35,10 @@ export default {
     pushWordToPlayed(state, word) {
         state.playedCards.push(word);
         state.visibleCards.shift();
-    }
+    },
+    setLevel(state,level) {
+        state.level = level;
+    },
     
 
 }

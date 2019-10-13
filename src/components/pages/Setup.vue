@@ -1,5 +1,6 @@
 <script>
 import OptionsSelect from '../shared/OptionsSelect'
+import {mapActions} from 'vuex'
 export default {
     components: {
         OptionsSelect
@@ -7,6 +8,12 @@ export default {
     data: () => ({
         clicked : true,
     }),
+    methods: {
+        ...mapActions(['fetchCategorizedWords']),
+        tempMethod() {
+            this.fetchCategorizedWords();
+        }
+    },
 
 
 }
@@ -19,7 +26,7 @@ export default {
       <v-container>
      <options-select></options-select>
      <div class="text-center">
-         <router-link  to="/kalamberry" tag="btn" class="font-weight-black display-2" >next</router-link>
+         <v-btn outlined @click="$router.push('kalamberry'); tempMethod()">GRAJ</v-btn>
      </div>
       </v-container>
   </div>

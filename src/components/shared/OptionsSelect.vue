@@ -1,4 +1,5 @@
 <script>
+import {mapState, mapActions} from 'vuex';
 export default {
     data: () => ({
         items: ['1','2','3','4'],
@@ -8,22 +9,36 @@ export default {
         'Trudnawy'
       ],
       level:'0',
-      category:''
+      category:[],
     }),
     methods: {
-      season (val) {
-        return this.icons[val]
+      ...mapActions(['fetchAllCategories','setSelectedCategories','setLevel']),
+    },
+    watch: {
+      category: function(x) {
+        this.$store.commit('setSelectedCategories', x)
+
       },
+      level: function(l) {
+        this.$store.commit('setLevel', l)
+      }
+    },
+      computed: {
+        ...mapState(['categories'])
+      },
+      created() {
+         this.fetchAllCategories();
+      
+      }
     }
 
-
-}
 
 
 </script>
 
 <template>
   <div id="optionsselect">
+    <v-container>
      <v-row>
        <p>Poziom trudności: {{levelLabels[level]}}</p>
     <v-col class="pa-12">
@@ -39,14 +54,16 @@ export default {
   </v-row>
         <p>Kategoria: {{category}}</p>
         <v-select
-      :items="items"
+      change="event"
+      :items="categories"
       v-model="category"
-      label="Item"
+      label="category"
+      multiple
       required
       @change="$v.select.$touch()"
       @blur="$v.select.$touch()"
     ></v-select>
-      
+       </v-container>
   </div>
 
 </template>

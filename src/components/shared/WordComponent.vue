@@ -1,13 +1,8 @@
 <template>
-    <div id="wordcomponent">
-                    <v-card
-                    class="bg"            
-          :elevation="2"
-          height="100"
-        >   
+    <div id="wordcomponent">                    
+         
                     <p class="font-weight-black display-2 align-center blur pt-4">{{card}}</p>
                     
-              </v-card>       
      </div>
     
 </template>
@@ -29,10 +24,8 @@
 </script>
 
 <style scoped>
-.bg {
-    background-color: #55bdb7;
-}
 .blur {
+    text-align: center;
     -webkit-user-select: none; /* Safari */        
     -moz-user-select: none; /* Firefox */
     -ms-user-select: none; /* IE10+/Edge */

@@ -2,10 +2,7 @@
 export default {
     data: () => ({
         clicked : true,
-    }),
-      mounted () {
-      console.log(this.$vuetify.breakpoint)
-    },    
+    }),    
     computed: {
       textSize () {
         switch (this.$vuetify.breakpoint.name) {
@@ -14,6 +11,7 @@ export default {
           case 'md': return 'font-weight-black display-4 link'
           case 'lg': return 'font-weight-black display-4 link'
           case 'xl': return 'font-weight-black display-4 link'
+          default  : return 'font-weight-black display-4 link'
         }
     },
   },

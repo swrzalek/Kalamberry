@@ -11,5 +11,6 @@ router.put('/dictonary/:id' , word_controller.word_update);
 router.delete('/dictonary/:id' , word_controller.word_delete);
 router.get('/dictonary' , word_controller.word_all);
 router.get('/category', word_controller.category_all);
+router.get('/chapters', word_controller.words_from_category);
 
 module.exports = router;

@@ -1,9 +1,7 @@
 <template>
-    <div id="actionbuttons">
-        <v-btn @click="correct" outlined mx-2 dark color="red lighten-1">
+        <v-btn @click="correct" fab outline mx-2 dark color="black">
             <v-icon dark>mdi-chevron-right</v-icon>
-         </v-btn>          
-     </div>    
+         </v-btn>  
 </template>
 
 <script>
@@ -13,7 +11,7 @@
         name: "acctionbuttons",
         methods: {
             correct() {
-                EventBus.$emit(types.$GAME_CORRECT_ANSWER);
+                EventBus.$emit(types.GAME_CORRECT_ANSWER);
             },                        
         },
         

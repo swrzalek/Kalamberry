@@ -9,25 +9,33 @@ const http = axios.create({
     baseURL : 'http://127.0.0.1:3000/api',
 })
 export default {
-    [types.INCREMENT]({commit}) {
-        commit(types.INCREMENT);
+    setLevel({commit}, level){
+        commit('setLevel', level)
     },
-    [types.DECREMENT]({commit}) {
-        commit(types.DECREMENT);
+    setSelectedCategories({commit}, selectedCategories){
+        commit('setSelectedCategories', selectedCategories)
     },
-    [types.RESET]({commit}) {
-        commit(types.RESET);
-    },
+    async fetchCategorizedWords({commit, state}) {
+        return http.get('/chapters', {
+            params: {
+                difficulty: state.level,
+                category: state.selectedCategories                
+            } })
+            .then((res) => {
+                commit(types.SET_ALL_WORDS, res.data)
+                commit(types.SET_LOADING_STATUS);
+                return res.data;
+            })
+    },  
     async fetchAllWords({ commit }) {
         return http.get('/dictonary')
             .then((res) => {
-                commit(types.SET_ALL_WORDS, res.data);
-                commit(types.SET_LOADING_STATUS);               
+                commit(types.SET_ALL_WORDS, res.data);              
                 return res.data;
             });
     },
     async fetchAllCategories({ commit }) {
-        return http.get('/categories')
+        return http.get('/category')
             .then((res) => {
                 commit(types.SET_ALL_CATEGORIES, res.data);
             }); 
@@ -39,7 +47,7 @@ export default {
             commit('pushWordToPlayed', state.visibleCards[0]);
         } 
     },
-    nextRound({commit}) {
+    nextRound({commit, dispatch}) {
         if(state.currentRound === 6) {
             dispatch('finishGame');
         } else {
@@ -57,5 +65,6 @@ export default {
     },
     startGame({commit}) {
         commit('setGameState', 'playing')
-    }
+    },
+    
 }

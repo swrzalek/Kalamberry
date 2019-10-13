@@ -1,13 +1,13 @@
 export default {
-    count: 0,
     allWords: [],
-    visibleWord: 'Dom',
+    wordsFromCategories: [],
     playedCards:[],
     visibleCards: [],
     currentGameCards: [],
-    visibleWordIndex: 0,
     isLoading: 'true',
     currentRound:'',
     gameState:'',
     categories: [],
+    level: '0',
+    selectedCategories: []
 }
