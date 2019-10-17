@@ -3,11 +3,10 @@ export default {
     wordsFromCategories: [],
     playedCards:[],
     visibleCards: [],
-    currentGameCards: [],
     isLoading: 'true',
     currentRound:'',
     gameState:'',
     categories: [],
+    selectedCategories: [],
     level: '0',
-    selectedCategories: []
 }

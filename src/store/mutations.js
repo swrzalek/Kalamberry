@@ -1,14 +1,12 @@
-import * as types from './constants';
-
 
 export default {
-    [types.SET_ALL_WORDS](state, allWords) {
+    setAllWords(state, allWords) {
         state.allWords = allWords;
     },
-    [types.SET_LOADING_STATUS](state) {
+    setLoadingStatus(state) {
         state.isLoading = !state.isLoading
     },
-    [types.SET_ALL_CATEGORIES](state, allCategories) {
+    setAllCategories(state, allCategories) {
         state.categories = allCategories;
     },
     setSelectedCategories(state, selectedCategories) {

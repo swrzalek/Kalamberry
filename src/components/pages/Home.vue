@@ -20,11 +20,14 @@ export default {
 
 <template>
   <div id="home">
-      <v-container class="mt-5">
-          <v-flex>              
-             <router-link  tag="p" to="/setup" v-bind:class="textSize" >KALAMBERRY</router-link>
-             <p v-bind:class="textSize">ABOUT</p>
-          </v-flex>         
+      <v-container 
+        class="mt-5"
+      >
+        <v-flex
+        >              
+          <router-link  tag="p" to="/setup" v-bind:class="textSize" >KALAMBERRY</router-link>
+          <p v-bind:class="textSize">ABOUT</p>
+        </v-flex>         
       </v-container>
   </div>
 
@@ -52,12 +55,13 @@ export default {
 		background-position: 0% 50%;
 	}
 }
+
 .link {
   cursor: pointer;
 }
+
 .link:hover
-{       	background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-
+{       	
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
 }
-
 </style>

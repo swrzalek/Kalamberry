@@ -1,7 +1,6 @@
-import * as types from './constants';
 import axios from 'axios';
 import state from './state'
-import { shuffleArray } from '../utils/utils';
+import { shuffleArray } from '../mixins/utils';
 const http = axios.create({
     headers: {
         'Access-Control-Allow-Origin': '*',
@@ -9,12 +8,7 @@ const http = axios.create({
     baseURL : 'http://127.0.0.1:3000/api',
 })
 export default {
-    setLevel({commit}, level){
-        commit('setLevel', level)
-    },
-    setSelectedCategories({commit}, selectedCategories){
-        commit('setSelectedCategories', selectedCategories)
-    },
+
     async fetchCategorizedWords({commit, state}) {
         return http.get('/chapters', {
             params: {
@@ -22,28 +16,20 @@ export default {
                 category: state.selectedCategories                
             } })
             .then((res) => {
-                commit(types.SET_ALL_WORDS, res.data)
-                commit(types.SET_LOADING_STATUS);
+                commit('setAllWords', res.data);
+                commit('setLoadingStatus');
                 return res.data;
             })
-    },  
-    async fetchAllWords({ commit }) {
-        return http.get('/dictonary')
-            .then((res) => {
-                commit(types.SET_ALL_WORDS, res.data);              
-                return res.data;
-            });
     },
     async fetchAllCategories({ commit }) {
         return http.get('/category')
             .then((res) => {
-                commit(types.SET_ALL_CATEGORIES, res.data);
+                commit('setAllCategories', res.data);
             }); 
     },
     loadNextCard({commit}){ 
-            const remaingWords = 1;
-         if(remaingWords) {          
-            
+        const remaingWords = 1;
+         if(remaingWords) { 
             commit('pushWordToPlayed', state.visibleCards[0]);
         } 
     },
@@ -51,20 +37,25 @@ export default {
         if(state.currentRound === 6) {
             dispatch('finishGame');
         } else {
-            commit('incrementRound')
+            commit('incrementRound');
         }
+    },
+    setLevel({commit}, level){
+        commit('setLevel', level);
+    },
+    setSelectedCategories({commit}, selectedCategories){
+        commit('setSelectedCategories', selectedCategories);
     },
     prepareGame({commit, state}) {
         commit('resetGame');
-       const StartDeck = state.allWords.map(i => i.word)
-
-        commit('setVisibleCards', shuffleArray(StartDeck));
+        const startDeck = state.allWords.map(i => i.word);
+        commit('setVisibleCards', shuffleArray(startDeck));
     },
     finishGame({commit}) {
-        commit('setGameState', 'finished')
+        commit('setGameState', 'finished');
     },
     startGame({commit}) {
-        commit('setGameState', 'playing')
+        commit('setGameState', 'playing');
     },
     
 }
