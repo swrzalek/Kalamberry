@@ -13,10 +13,10 @@ export default {
         return http.get('/chapters', {
             params: {
                 difficulty: state.level,
-                category: state.selectedCategories                
+                category: state.selectedCategories.map(i => i.toLowerCase()),                
             } })
             .then((res) => {
-                commit('setAllWords', res.data);
+                commit('setWordsFromCategories', res.data.map(i => i.word));
                 commit('setLoadingStatus');
                 return res.data;
             })
@@ -24,17 +24,27 @@ export default {
     async fetchAllCategories({ commit }) {
         return http.get('/category')
             .then((res) => {
-                commit('setAllCategories', res.data);
+                commit('setAllCategories', res.data.map(i => i.toUpperCase()));
             }); 
     },
-    loadNextCard({commit}){ 
-        const remaingWords = 1;
-         if(remaingWords) { 
-            commit('pushWordToPlayed', state.visibleCards[0]);
-        } 
+    loadNextCard({commit, dispatch}){ 
+        const { wordsFromCategories,
+                playedCards, 
+                visibleCards 
+              } = state;
+
+        const remaingWords = wordsFromCategories.filter(x => !playedCards.includes(x));
+        const newVisibleWord = shuffleArray(remaingWords)[0] 
+        console.log(shuffleArray(remaingWords))     
+         if(remaingWords.length > 0) { 
+            commit('pushWordToPlayed', visibleCards[0]);
+            commit('pushWordToVisibleCards', newVisibleWord);
+        } else {
+            dispatch('finishGame');
+        }
     },
     nextRound({commit, dispatch}) {
-        if(state.currentRound === 6) {
+        if(state.visibleCards.length === 0) {
             dispatch('finishGame');
         } else {
             commit('incrementRound');
@@ -47,9 +57,9 @@ export default {
         commit('setSelectedCategories', selectedCategories);
     },
     prepareGame({commit, state}) {
+        const { wordsFromCategories } = state;
         commit('resetGame');
-        const startDeck = state.allWords.map(i => i.word);
-        commit('setVisibleCards', shuffleArray(startDeck));
+        commit('setVisibleCards', shuffleArray(wordsFromCategories).splice(0,3));
     },
     finishGame({commit}) {
         commit('setGameState', 'finished');

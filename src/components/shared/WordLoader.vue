@@ -30,7 +30,7 @@ export default {
         EventBus.$off(GAME_CORRECT_ANSWER, this.correctAnswer);
     },
     computed: {
-        ...mapState(['allWords','gameState']),
+        ...mapState(['gameState']),
         currentWord() {
             return "Słowo";
         },            
@@ -42,8 +42,10 @@ export default {
         }
     },
     watch: {
-        gameState(){               
-            this.loadFirstWord();
+        gameState(x){ 
+            if(x === "playing") {
+                this.loadFirstWord();
+            }        
         }
     },
     methods: {

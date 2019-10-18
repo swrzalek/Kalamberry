@@ -1,5 +1,4 @@
 export default {
-    allWords: [],
     wordsFromCategories: [],
     playedCards:[],
     visibleCards: [],

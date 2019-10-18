@@ -46,7 +46,7 @@ export default {
         md="8"
         lg="8"
         >
-          <p>Poziom trudności: {{levelLabels[level]}}</p>
+          <p class="grey--text text--darken-2">Poziom trudności: {{levelLabels[level]}}</p>
           <v-slider
             color="purple darken-2"
             track-color="purple lighten-5"
@@ -79,6 +79,9 @@ export default {
 </template>
 
 <style lang="scss">
+  .v-slider__tick-label {
+    color:  #616161;
+  }
   .rounded { 
      border-radius: 10px;
   }

@@ -2,6 +2,7 @@
 import WordLoader from '../shared/WordLoader'
 import BeforeStartModal from '../shared/BeforeStartModal'
 import ActionButtons from '../shared/ActionButtons'
+import EndDialog from '../shared/EndDialog'
 import {
   mapActions,
   mapState,
@@ -11,22 +12,24 @@ export default {
   components: {
     WordLoader,
     ActionButtons,
-    BeforeStartModal
+    BeforeStartModal,
+    EndDialog
   },
   data: () => ({
     showModal: true,
   }),    
   methods: {
-    ...mapActions(['loadNextCard']),
+    ...mapActions(['loadNextCard','nextRound']),
     handleCorrectAnswer() {
         this.showNextCard()
     },
     showNextCard() {
+        this.nextRound();
         this.loadNextCard();
     },        
   },
   computed: {
-    ...mapState(['visibleCards','isLoading']),
+    ...mapState(['visibleCards','isLoading','currentRound']),
     mask: function() {
       return this.showModal ? 'mask-blur' : '';
     },        
@@ -35,8 +38,9 @@ export default {
 </script>
 <template>
   <div id="charades" >
-    <before-start-modal v-if="showModal" @close="showModal = false; "></before-start-modal>
-    <v-content v-bind:class="mask">        
+    <before-start-modal v-if="showModal" @close="showModal = false; "></before-start-modal>   
+    <v-content v-bind:class="mask"> 
+       <end-dialog ></end-dialog>       
       <v-container
         fluid
         fill-height
@@ -49,7 +53,7 @@ export default {
             xs12
             sm8
             md4
-          >            
+          >          
             <v-card 
                class="elevation-2"
             >              
@@ -61,7 +65,7 @@ export default {
                   :cards="visibleCards"
                 ></word-loader>
               </v-card-text>
-            </v-card>            
+            </v-card>           
             <v-flex 
               class="mt-4"
             >

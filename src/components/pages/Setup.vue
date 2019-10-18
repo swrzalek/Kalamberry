@@ -18,16 +18,15 @@ export default {
   
 <template>
   <div id="setup">
+      <v-content>
       <v-container>
      <options-select ></options-select>     
       </v-container>
+      </v-content>
   </div>
 
 </template>
 
 <style lang="scss">
-    #setup {
-        background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-        flex: 1 1 auto;
-    }
+
 </style>

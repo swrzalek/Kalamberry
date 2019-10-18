@@ -1,8 +1,5 @@
 
 export default {
-    setAllWords(state, allWords) {
-        state.allWords = allWords;
-    },
     setLoadingStatus(state) {
         state.isLoading = !state.isLoading
     },
@@ -13,10 +10,10 @@ export default {
         state.selectedCategories = selectedCategories;
     },
     setWordsFromCategories(state, words) {
-        state.setWordsFromCategories = words;
+        state.wordsFromCategories = words;
     },
-    pushWordToVisibleWord(state, word) {
-        state.visibleWord = word;
+    pushWordToVisibleCards(state, word) {
+        state.visibleCards.push(word);
     },
     resetGame(state) {
         state.currentRound=1;        
