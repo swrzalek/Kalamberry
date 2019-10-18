@@ -13,7 +13,7 @@
                 >
                 </v-text-field>
                 <p 
-                  class="font-weight-black display-4 white--text pointer anim"
+                  class="font-weight-black display-4 white--text pointer"
                   v-if="!isLoading"
                   @click="$emit('close'); started()"
                 >
@@ -94,34 +94,6 @@ export default {
 .modal-leave-active .modal-container {
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
-}
-
- .anim {
-
-/* Clip Background Image */
-
-	  background: url(http://f.cl.ly/items/010q3E1u3p2Q0j1L1S1o/animated_text_fill.png) repeat-y;
-	  -webkit-background-clip: text;
-	  background-clip: text;
-
-/* Animate Background Image */
-
-	  -webkit-text-fill-color: transparent;
-	  -webkit-animation: aitf 80s linear infinite;
-
-/* Activate hardware acceleration for smoother animations */
-
-	  -webkit-transform: translate3d(0,0,0);
-	  -webkit-backface-visibility: hidden;
-
-  
-}
-
-/* Animate Background Image */
-
-@-webkit-keyframes aitf {
-	0% { background-position: 0% 50%; }
-	100% { background-position: 100% 50%; }
 }
 
 
