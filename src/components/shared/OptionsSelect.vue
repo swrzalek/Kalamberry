@@ -59,7 +59,6 @@ export default {
           ></v-slider>
           <v-select
             color="purple darken-2"
-            background-color="purple lighten-5"
             item-color="purple darken-2"
             class="mt-8"
             :items="categories"
