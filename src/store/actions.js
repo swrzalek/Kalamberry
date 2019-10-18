@@ -5,7 +5,7 @@ const http = axios.create({
     headers: {
         'Access-Control-Allow-Origin': '*',
       },
-    baseURL : 'http://127.0.0.1:3000/api',
+    baseURL : 'https://kalamberry-backend.herokuapp.com/api',
 })
 export default {
 
