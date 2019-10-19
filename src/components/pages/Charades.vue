@@ -38,8 +38,14 @@ export default {
 </script>
 <template>
   <div id="charades" >
+     
     <before-start-modal v-if="showModal" @close="showModal = false; "></before-start-modal>   
     <v-content v-bind:class="mask"> 
+      <v-toolbar dense
+     color="transparent"
+     class="elevation-0">
+        <v-app-bar-nav-icon><v-icon @click="$router.push('setup')">mdi-settings</v-icon></v-app-bar-nav-icon>
+      </v-toolbar>
        <end-dialog ></end-dialog>       
       <v-container
         fluid
@@ -92,4 +98,8 @@ export default {
     -ms-filter: blur(10px);
     filter: blur(10px);
 }
+.transparent {
+  background-color: transparent!important;
+  border-color: transparent!important;
+ }
 </style>
