@@ -1,7 +1,7 @@
 
 export default {
-    setLoadingStatus(state) {
-        state.isLoading = !state.isLoading
+    setLoadingStatus(state, boolean) {
+        state.isLoading = boolean;
     },
     setAllCategories(state, allCategories) {
         state.categories = allCategories;
@@ -16,7 +16,7 @@ export default {
         state.visibleCards.push(word);
     },
     resetGame(state) {
-        state.currentRound=1;        
+        state.currentRound=1;     
     },
     incrementRound(state) {
         state.currentRound += 1;

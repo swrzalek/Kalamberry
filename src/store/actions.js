@@ -10,6 +10,7 @@ const http = axios.create({
 export default {
 
     async fetchCategorizedWords({commit, state}) {
+        commit('setLoadingStatus', true)
         return http.get('/chapters', {
             params: {
                 difficulty: state.level,
@@ -17,7 +18,9 @@ export default {
             } })
             .then((res) => {
                 commit('setWordsFromCategories', res.data.map(i => i.word));
-                commit('setLoadingStatus');
+                if(res.data.length > 0) {
+                    commit('setLoadingStatus', false)
+                } 
                 return res.data;
             })
     },
@@ -34,8 +37,7 @@ export default {
               } = state;
 
         const remaingWords = wordsFromCategories.filter(x => !playedCards.includes(x));
-        const newVisibleWord = shuffleArray(remaingWords)[0] 
-        console.log(shuffleArray(remaingWords))     
+        const newVisibleWord = shuffleArray(remaingWords)[0]    
          if(remaingWords.length > 0) { 
             commit('pushWordToPlayed', visibleCards[0]);
             commit('pushWordToVisibleCards', newVisibleWord);
