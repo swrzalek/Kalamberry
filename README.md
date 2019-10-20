@@ -5,7 +5,7 @@ Kalamberry is mobile friendly web-application more known as Charades.
 Live verison: https://kalamberry.herokuapp.com
 
 
-![](https://s3.gifyu.com/images/ezgif-1-73fb6cee5e35.gif)
+[![Watch the video](https://i.imgur.com/7Smv2qk.png)](https://streamable.com/s/5mo58/vfxivw)
 
 # Features!
 
