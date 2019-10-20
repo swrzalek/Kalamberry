@@ -19,7 +19,7 @@ export default {
     showModal: true,
   }),    
   methods: {
-    ...mapActions(['loadNextCard','nextRound']),
+    ...mapActions(['loadNextCard','nextRound','pauseGame']),
     handleCorrectAnswer() {
         this.showNextCard()
     },
@@ -44,12 +44,13 @@ export default {
       <v-toolbar dense
      color="transparent"
      class="elevation-0">
-        <v-app-bar-nav-icon><v-icon @click="$router.push('setup')">mdi-settings</v-icon></v-app-bar-nav-icon>
+        <v-app-bar-nav-icon><v-icon @click="$router.push('setup');">mdi-settings</v-icon></v-app-bar-nav-icon>
       </v-toolbar>
        <end-dialog ></end-dialog>       
       <v-container
         fluid
         fill-height
+        class="mt-n8"
       >
         <v-layout
           align-center

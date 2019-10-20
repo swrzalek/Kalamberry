@@ -16,7 +16,8 @@ export default {
         state.visibleCards.push(word);
     },
     resetGame(state) {
-        state.currentRound=1;     
+        state.currentRound= 1;    
+        state.playedCards=[];
     },
     incrementRound(state) {
         state.currentRound += 1;
@@ -28,12 +29,18 @@ export default {
         state.visibleCards = value;
     },
     pushWordToPlayed(state, word) {
-        state.playedCards.push(word);
-        state.visibleCards.shift();
+        if(Array.isArray(word)) {
+            state.playedCards = state.playedCards.concat(word);
+        } else {
+            state.playedCards.push(word);
+            state.visibleCards.shift();
+        }
+       
     },
     setLevel(state,level) {
         state.level = level;
     },
+    
     
 
 }

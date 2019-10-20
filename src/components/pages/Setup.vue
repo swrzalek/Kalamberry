@@ -1,5 +1,6 @@
 <script>
 import OptionsSelect from '../shared/OptionsSelect'
+import { mapActions } from 'vuex'
 export default {
     components: {
         OptionsSelect
@@ -9,8 +10,11 @@ export default {
         valid: false,
     }),
     methods: {
-       
+        ...mapActions(['pauseGame'])
     },
+    created() {
+      this.pauseGame();  
+  }
 }
 
 

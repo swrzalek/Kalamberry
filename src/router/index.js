@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Home from '../components/pages/Home';
 import Charades from '../components/pages/Charades';
 import Setup from "../components/pages/Setup";
+import About from "../components/pages/About"
 import store from "../store"
 Vue.use(Router)
 
@@ -34,5 +35,10 @@ export default new Router({
       name: 'setup',
       component: Setup
     },
+    {
+      path: '/about',
+      name: 'about',
+      component: About
+    }
   ]
 })

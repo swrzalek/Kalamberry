@@ -13,11 +13,14 @@
                 >
                 </v-text-field>
                 <p 
-                  class="font-weight-black display-4 white--text pointer"
+                  class="text-center font-weight-light display-2 grey--text text--lighten-2 pointer"
                   v-if="!isLoading"
                   @click="$emit('close'); started()"
                 >
-                START
+                <span>dotnknij by zacząć</span>
+                <v-icon
+                color="grey lighten-2"
+                size="40">mdi-gesture-tap</v-icon>
                 </p>            
             </slot>
           </div>
@@ -63,6 +66,7 @@ export default {
   background-color: rgba(0, 0, 0, .5);
   display: table;
   transition: opacity .3s ease;
+  flex: 1 1 auto;
 }
 
 .modal-wrapper {

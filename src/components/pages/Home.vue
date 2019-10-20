@@ -20,41 +20,22 @@ export default {
 
 <template>
   <div id="home">
+    <v-content>
       <v-container 
         class="mt-5"
       >
         <v-flex
         >              
           <router-link  tag="p" to="/setup" v-bind:class="textSize" >KALAMBERRY</router-link>
-          <p v-bind:class="textSize">ABOUT</p>
+          <router-link  tag="p" to="/about" v-bind:class="textSize" >ABOUT</router-link>
         </v-flex>         
       </v-container>
+      </v-content>
   </div>
 
 </template>
 
 <style lang="scss">
-#home {
-	width: 100%;
-	height: 100vh;
-	font-family: "Exo", sans-serif;
-	color: #fff;
-	background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-	background-size: 400% 400%;
-	animation: gradientBG 15s ease infinite;
-}
-
-@keyframes gradientBG {
-	0% {
-		background-position: 0% 50%;
-	}
-	50% {
-		background-position: 100% 50%;
-	}
-	100% {
-		background-position: 0% 50%;
-	}
-}
 
 .link {
   cursor: pointer;
