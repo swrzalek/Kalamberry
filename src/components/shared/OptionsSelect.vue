@@ -27,6 +27,9 @@ export default {
   },
   computed: {
     ...mapState(['categories']),
+    loading: function () {
+      return this.categories.length === 0;
+    }
   },
   created() {
       this.fetchAllCategories();  
@@ -62,6 +65,8 @@ export default {
             item-color="purple darken-2"
             class="mt-8"
             :items="categories"
+            :disabled="loading"
+            :loading="loading"
             v-model="category"
             label="Kategoria"
             dense
